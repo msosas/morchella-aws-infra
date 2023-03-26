@@ -29,3 +29,5 @@ override.tf.json
 # example: *tfplan*
 
 modules/regional/lambdas/packages/*
+.terraform
+*.tfstate*
