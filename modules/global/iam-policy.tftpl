@@ -1,0 +1,25 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [    
+    {
+      "Sid": "Stmt1672198782187",
+      "Action": [
+        "lambda:InvokeAsync",
+        "lambda:InvokeFunction"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "Stmt167219878218",
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Effect": "Allow",
+      "Resource": [
+        "arn:aws:s3:::${bucket_name}/*"
+      ]
+    }
+  ]
+}

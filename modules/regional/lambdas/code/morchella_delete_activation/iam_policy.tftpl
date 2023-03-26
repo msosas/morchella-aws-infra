@@ -1,0 +1,28 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:*:${account_id}:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:*:${account_id}:log-group:/aws/lambda/morchella-delete-activation:*"
+            ]
+        },
+        {
+        "Sid": "Stmt1672172412332",
+        "Action": [
+            "ssm:DeleteActivation"
+        ],
+        "Effect": "Allow",
+        "Resource": "*"
+        }
+    ]
+}

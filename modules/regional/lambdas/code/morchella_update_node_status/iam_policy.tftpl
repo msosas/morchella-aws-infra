@@ -1,0 +1,38 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:${aws_region}:*:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:${aws_region}:*:log-group:/aws/lambda/morchella-update-node-status:*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "tag:GetResources"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "Stmt1672198782187",
+            "Action": [
+                "lambda:InvokeAsync",
+                "lambda:InvokeFunction"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:lambda:${aws_region}:*:function:morchella-tag-resource"
+            ]
+        }
+    ]
+}

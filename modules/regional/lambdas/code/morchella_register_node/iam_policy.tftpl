@@ -1,0 +1,58 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:*:${account_id}:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:*:${account_id}:log-group:/aws/lambda/morchella-register-node:*"
+            ]
+        },
+        {
+            "Sid": "Stmt1672172412332",
+            "Action": [
+                "ssm:CreateActivation",
+                "ssm:AddTagsToResource"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        },
+        {
+            "Sid": "Stmt1672172655256",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:iam::*:role/AmazonEC2RunCommandRoleForManagedInstances"
+        },
+        {
+            "Sid": "Stmt1672172655257",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::morchella-nodes-*",
+                "arn:aws:s3:::morchella-nodes-*/*"
+            ]
+        },
+        {
+            "Sid": "Stmt1672172655666",
+            "Action": [
+                "s3:ListAllMyBuckets"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        }
+    ]
+}
